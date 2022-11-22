@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+</head>
+<body>
+    {% extends './dashboard.html' %}
+    {% block container1 %}
+    <ul><li> 
+        <a href="{% url 'logout' %}">logout</a>
+    </li></ul> {% endblock container1 %} <br> <br>
+    {% block container2 %}
+    <h3 class = 'msg'>Success : You are logged in.</h3>
+    <h3>Welcome {{username}}</h1>
+    <h3>User can log in and report an incident. User can also see the saved incident</h3>
+    <h3>{{incidents}}</h3>
+    {% endblock container2 %}
+</body>
+</html>

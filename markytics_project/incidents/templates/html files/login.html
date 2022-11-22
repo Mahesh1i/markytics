@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .content101{
+            padding: 10px 30px 10px  10mpx;
+            font-family: sans-serif;
+        }
+        .content20{
+            padding: 30px 30px 10px  300px;
+            font-family: sans-serif;
+        }
+        .content88{
+            padding: 30px 30px 10px  300px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome, Login Here... </h1>
+    {% extends './dashboard.html' %}
+    <div class = content20>
+        {% block container2 %}
+
+        <form action="" method="post">
+        {% csrf_token %}
+        {% if form.non_field_errors %}
+            {% for error in form.non_field_errors %}
+                <p>{{error}}</p>
+            {% endfor %}
+        {% endif %}
+            {% for fm in form %}
+                {{fm.label_tag}}  {{fm}}  {{fm.errors}} <br> <br>
+            {% endfor %}
+            <input type="submit" value="Login">
+            <br>
+        </form>
+    {% endblock container2 %}
+    </div>
+    
+    {% block container3 %}
+    <div class  = content88> 
+    <h3> Don't have account? <a href="/register/">Register Here</a></h3>
+    </div>
+    {% endblock container3 %}
+</body>
+</html>

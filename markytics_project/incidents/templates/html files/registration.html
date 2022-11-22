@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container10{
+            padding: 10px 30px 10px  300px;
+            font-family: sans-serif;
+        }
+        .container100{
+            background-color: yellow;
+            
+        }
+    </style>
+</head>
+<body>
+    <h1 class = container10>Register New User</h1>
+    {% extends './dashboard.html' %}
+    <div>
+        {% block container1 %}
+        <ul><li> 
+            <a href="{% url 'login' %}">Login</a>
+        </li></ul> {% endblock container1 %} <br> <br>
+        {% block container2 %}
+        <form action="" method="post">
+            {% csrf_token %}
+            {% for fm in form %}
+            {{fm.label_tag}} {{fm}} {{fm.errors}} <br> <br>
+            {% endfor %}
+            <input type="submit" value="register user" class = container100 onclick = "location.href = /login/">
+            {% if messages %}
+            {% for msg in messages %}
+                <small {% if message.tags %} class = "{{message.tags}}" {% endif %}>{{msg}}</small> <br> <br>
+            {% endfor %}
+            {% endif %}
+            {% if form.non_field_errors %}
+            {% for error in form.non_field_errors %}
+                <p>{{error}}</p>
+            {% endfor %}
+            {% endif %}
+        </form> 
+        {% endblock container2 %}
+    </div>
+</body>
+</html>

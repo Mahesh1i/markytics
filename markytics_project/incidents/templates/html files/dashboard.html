@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type = text/css>
+        body{
+            height: 125vh;  
+            margin-top: 80px;  
+            padding: 30px;  
+            background-size: cover;  
+            font-family: sans-serif;
+            color: black;
+        }
+        header{
+            padding: 6px 20px 6px 16px;
+            font-size: 15px;
+            color: yellow;
+            display: block;
+            height: 100%;
+            width: 160px;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: #236;
+            overflow-x: hidden;
+            padding-top: 20px;
+        }
+        header * {  
+            display: inline;  
+            }  
+        header li {  
+            margin: 0px;  
+        }  
+        header li a {  
+            color: yellow;  
+            text-decoration: none;  
+        }
+        h1{
+            padding: 30px 30px 10px  300px;
+        }
+        .container1{
+            font-size: 15px;
+        }
+        .container2{
+            padding: 30px 30px 10px  300px;
+            font-family: sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <header>
+    <nav>
+        <h1 class = container2></i></h1>
+        <ul><li>
+            <img src="markytics.jpg" alt="Not Found" width="50" height="60">
+        </li></ul> <br> <br>
+        <ul><li>
+            <a href="{% url 'dashboard' %}">Dashboard</a>
+        </li></ul> <br> <br>
+        <h6 class = container1>Components</h6> <br> <br>
+        <ul><li>
+            <a href="{% url 'profile' %}">profile</a>
+        </li></ul> <br> <br>
+        <ul><li>
+            <a href="{% url 'report_incident' %}">Report Incident</a>
+        </li></ul> <br> <br>
+        <ul><li>
+            <a href="{% url 'saved_incidents' %}">Saved Incident</a>
+        </li></ul> <br> <br>
+        <ul><li>
+            <a href="{% url 'profile' %}">Others</a>
+        </li></ul> <br> <br>
+        <h2 class = container1>Authentication</h2> <br> <br>
+        {% block container1 %}
+        <ul><li> 
+            <a href="{% url 'login' %}">Login</a>
+        </li></ul> {% endblock container1 %} <br> <br>
+        <ul><li>
+            <a href="{% url 'register' %}">register</a>
+        </li></ul> <br> <br>
+    </nav>
+    </header>
+    <div class = container2>{% block container2 %} {% endblock container2 %}</div>
+    {% block container3 %} {% endblock container3 %}
+    {% block container4 %} {% endblock container4 %}
+    {% block container5 %} {% endblock container5 %}
+</body>
+</html>

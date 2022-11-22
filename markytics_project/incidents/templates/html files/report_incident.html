@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .content200{
+            padding: 30px 30px 10px  300px;
+            font-family: sans-seri
+        }
+    </style>
+</head>
+<body>
+    {% extends './dashboard.html' %}
+    {% block container1 %}
+    <ul><li> 
+        <a href="{% url 'logout' %}">Logout</a>
+    </li></ul> {% endblock container1 %} <br> <br>
+    <div class = content200>
+    {% block container2 %}     
+    <form action="" method="post">
+        {% csrf_token %}
+            {% for fm in form %}
+                {{fm.label_tag}}   {{fm}}  {{fm.errors}} <br> <br>
+            {% endfor %}
+            <input type="submit" value="Save Incident" onclick = "location.href = /profile/">
+            <input type="submit" value = "Cancel" onclick = "location.href = /profile/">
+            {% if form.non_fields_errors %}
+            {% for error in form %}
+                <p>{{error}}</p>
+            {% endfor %}
+            {% endif %}
+    </form>
+    {% if messages %}
+    {% for msg in messages %}
+        <small {% if message.tags %} class = "{{message.tags}}" {% endif %}>{{msg}}</small> <br> <br>
+    {% endfor %}
+    {% endif %}
+    {% endblock container2 %}
+    </div>
+</body>
+</html>
